@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>📁 C++ Ejercicios Ocultos | Tema VS Code</title>
+    <title>📁 C++ Ejercicios Ocultos | Código documentado</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <style>
+        /* Mismos estilos que antes (acordeón oculto, tema oscuro) */
         * {
             margin: 0;
             padding: 0;
@@ -40,13 +41,11 @@
             margin-bottom: 2rem;
             font-size: 0.9rem;
         }
-        /* Lista de ejercicios */
         .exercises-list {
             display: flex;
             flex-direction: column;
             gap: 1rem;
         }
-        /* Cada tarjeta-ejercicio */
         .ex-card {
             background: #0F1117;
             border: 1px solid #282e3c;
@@ -57,7 +56,6 @@
         .ex-card:hover {
             border-color: #4EC5F0;
         }
-        /* Botón / cabecera clickeable */
         .ex-header {
             display: flex;
             justify-content: space-between;
@@ -94,14 +92,12 @@
             font-size: 1.2rem;
             transition: transform 0.2s;
         }
-        /* Contenido oculto POR DEFECTO */
         .ex-content {
-            display: none;   /* ← totalmente oculto */
+            display: none;
             background: #0A0C12;
             border-top: 1px solid #1e2432;
             padding: 1rem 1.5rem 1.5rem;
         }
-        /* Cuando se abre, mostramos con flex/block */
         .ex-content.open {
             display: block;
         }
@@ -173,10 +169,10 @@
 <body>
 <div class="container">
     <h1><i class="fas fa-code"></i> C++ Ejercicios ocultos</h1>
-    <div class="sub">🔽 Haz clic en cualquier ejercicio para ver el código</div>
+    <div class="sub">🔽 Haz clic en cualquier ejercicio para ver el código (totalmente documentado)</div>
 
     <div class="exercises-list">
-        <!-- EJERCICIO 1 -->
+        <!-- EJERCICIO 1 (sin cambios) -->
         <div class="ex-card" data-ex="1">
             <div class="ex-header">
                 <div class="ex-title">
@@ -218,51 +214,117 @@ int main()
             </div>
         </div>
 
-        <!-- EJERCICIO 2 -->
+        <!-- EJERCICIO 2 (REEMPLAZADO con código documentado línea por línea, soporta mayúsculas) -->
         <div class="ex-card" data-ex="2">
             <div class="ex-header">
                 <div class="ex-title">
                     <i class="fas fa-microphone-alt"></i>
-                    <span>#02 · Contador de vocales</span>
-                    <span class="badge">strings | bucle for</span>
+                    <span>#02 · Contador de vocales (con documentación)</span>
+                    <span class="badge">strings | mayúsculas | comentarios</span>
                 </div>
                 <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="ex-content">
                 <div class="desc">
-                    📌 Pide una palabra y cuenta cuántas vocales (a,e,i,o,u) contiene. Ejemplo: "computadora" → 5 vocales.
+                    📌 Pide una palabra y cuenta cuántas vocales tiene (incluye mayúsculas). El código está documentado línea por línea en español.
                 </div>
-                <pre><code id="code2" class="language-cpp">/* Contar vocales en una palabra */
+                <pre><code id="code2" class="language-cpp">// ============================================================
+// LÍNEA 1: Inclusión de la biblioteca iostream
+// ============================================================
+#include &lt;iostream&gt;
+// Esta línea incluye la biblioteca estándar de E/S (Input/Output).
+// Permite usar objetos como 'cout' para imprimir en pantalla y 'cin' para leer del teclado.
 
-#include &lt;iostream&gt; 
+// ============================================================
+// LÍNEA 2: Uso del espacio de nombres std
+// ============================================================
 using namespace std;
+// Evita tener que escribir 'std::' antes de cada elemento estándar
+// (cout, cin, string, endl, etc.). Hace el código más legible.
 
+// ============================================================
+// LÍNEA 4: Función principal main
+// ============================================================
 int main() {
-    string palabra;
-    int contador = 0;
-    
-    cout&lt;&lt;"Ingresa la palabra: ";
-    cin&gt;&gt;palabra;
-    
-    for(int i = 0; i&lt; palabra.length(); i++){
-        if(palabra[i] == 'a'||palabra[i] == 'e'||
-           palabra[i] == 'i'||palabra[i] == 'o'||
-           palabra[i] == 'u')
-        {
-           contador++;
-        }
-    }
-    
-    cout&lt;&lt;"La palabra "&lt;&lt;palabra&lt;&lt;endl;
-    cout&lt;&lt;"Vocales que tiene es:"&lt;&lt;contador;
+// Todo programa en C++ comienza su ejecución desde la función main().
+// 'int' indica que retornará un número entero al sistema operativo al finalizar.
 
+// ============================================================
+// LÍNEA 5: Declaración de variable 'palabra' (tipo string)
+// ============================================================
+    string palabra;
+    // Se crea una variable llamada 'palabra' de tipo string (cadena de texto).
+    // Almacenará la entrada del usuario.
+
+// ============================================================
+// LÍNEA 6: Declaración e inicialización de 'vocales' (tipo int)
+// ============================================================
+    int vocales = 0;
+    // Se declara una variable entera 'vocales' y se inicializa con 0.
+    // Actuará como contador de las vocales encontradas.
+
+// ============================================================
+// LÍNEA 8: Mensaje de solicitud al usuario
+// ============================================================
+    cout &lt;&lt; "Ingresa una palabra: ";
+    // 'cout' envía el texto entre comillas a la consola.
+    // No hay 'endl' para que el cursor quede en la misma línea y el usuario escriba al lado.
+
+// ============================================================
+// LÍNEA 9: Lectura de la palabra desde el teclado
+// ============================================================
+    cin &gt;&gt; palabra;
+    // 'cin' extrae la entrada del usuario hasta el primer espacio en blanco (o salto de línea)
+    // y la guarda en la variable 'palabra'. Solo leerá una palabra (sin espacios).
+
+// ============================================================
+// LÍNEA 11: Bucle for para recorrer cada carácter de la palabra
+// ============================================================
+    for(int i = 0; i &lt; palabra.length(); i++) {
+    //   |       |        |
+    //   |       |        +-- i++ : incrementa i en 1 después de cada iteración.
+    //   |       +-- condición: mientras i sea menor que la longitud de 'palabra'.
+    //   +-- declaración e inicialización de variable local 'i' con valor 0.
+    // palabra.length() devuelve el número de caracteres (incluyendo espacios, si los hubiera, pero aquí no).
+    // El bucle se ejecuta una vez por cada letra de la palabra.
+
+// ============================================================
+// LÍNEA 12-14: Condicional para detectar vocales (minúsculas y mayúsculas)
+// ============================================================
+        if(palabra[i] == 'a' || palabra[i] == 'e' ||
+           palabra[i] == 'i' || palabra[i] == 'o' ||
+           palabra[i] == 'u' || palabra[i] == 'A' ||
+           palabra[i] == 'E' || palabra[i] == 'I' ||
+           palabra[i] == 'O' || palabra[i] == 'U') {
+        // palabra[i] accede al carácter en la posición i del string (0 para el primero).
+        // Compara ese carácter con cada vocal (minúscula y mayúscula) usando el operador OR (||).
+        // Si coincide con alguna, la condición es verdadera.
+
+// ============================================================
+// LÍNEA 15: Incremento del contador
+// ============================================================
+            vocales++;
+            // Cuando se encuentra una vocal, se suma 1 al contador 'vocales'.
+        }
+
+// ============================================================
+// LÍNEA 18: Impresión del resultado final
+// ============================================================
+    cout &lt;&lt; "La palabra tiene " &lt;&lt; vocales &lt;&lt; " vocales." &lt;&lt; endl;
+    // Muestra el mensaje con el total de vocales encontradas.
+    // 'endl' añade un salto de línea y limpia el buffer de salida.
+
+// ============================================================
+// LÍNEA 20: Retorno de la función main
+// ============================================================
     return 0;
+    // Devuelve 0 al sistema operativo, indicando que el programa terminó sin errores.
 }</code></pre>
                 <button class="btn-copy" data-code="code2"><i class="fas fa-copy"></i> Copiar código</button>
             </div>
         </div>
 
-        <!-- 👇 Aquí puedes agregar más ejercicios copiando el bloque .ex-card -->
+        <!-- Aquí puedes seguir agregando más ejercicios -->
     </div>
     <div class="footer">
         <i class="fas fa-arrow-down"></i> Todos los códigos empiezan ocultos · Haz clic para abrir
@@ -273,8 +335,7 @@ int main() {
 
 <script>
     (function() {
-        // 1. Asegurar que TODOS los .ex-content estén ocultos al inicio (ya lo están por CSS)
-        // 2. Lógica de toggle al hacer clic en .ex-header
+        // Lógica de toggle (acordeón) y copiar (igual que antes)
         const cards = document.querySelectorAll('.ex-card');
         
         function closeAllExcept(currentCard) {
@@ -283,8 +344,10 @@ int main() {
                 const icon = card.querySelector('.toggle-icon');
                 if (card !== currentCard && content.classList.contains('open')) {
                     content.classList.remove('open');
-                    if (icon) icon.classList.remove('fa-chevron-up');
-                    if (icon) icon.classList.add('fa-chevron-down');
+                    if (icon) {
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    }
                 }
             });
         }
@@ -295,19 +358,15 @@ int main() {
             const icon = card.querySelector('.toggle-icon');
             
             header.addEventListener('click', (e) => {
-                // Evitar que el click en el botón copiar cierre/abra (el botón tiene su propio manejador)
                 if (e.target.closest('.btn-copy')) return;
-                
                 const isOpen = content.classList.contains('open');
                 if (!isOpen) {
-                    // Cerrar los otros y abrir este
                     closeAllExcept(card);
                     content.classList.add('open');
                     if (icon) {
                         icon.classList.remove('fa-chevron-down');
                         icon.classList.add('fa-chevron-up');
                     }
-                    // Resaltar sintaxis por si el código no se había resaltado aún
                     if (typeof hljs !== 'undefined') {
                         const codeBlock = content.querySelector('code');
                         if (codeBlock) hljs.highlightElement(codeBlock);
@@ -322,7 +381,7 @@ int main() {
             });
         });
 
-        // 3. Funcionalidad de copiar
+        // Toast y copiar
         const toast = document.getElementById('toastMsg');
         let toastTimer;
         function showToast(msg) {
@@ -340,7 +399,6 @@ int main() {
                 await navigator.clipboard.writeText(textToCopy);
                 showToast('✅ Código copiado');
             } catch (err) {
-                // fallback
                 const textarea = document.createElement('textarea');
                 textarea.value = textToCopy;
                 document.body.appendChild(textarea);
@@ -354,14 +412,12 @@ int main() {
         const copyButtons = document.querySelectorAll('.btn-copy');
         copyButtons.forEach(btn => {
             btn.addEventListener('click', (e) => {
-                e.stopPropagation();   // Importante: evita que se dispare el toggle del acordeón
+                e.stopPropagation();
                 const targetCodeId = btn.getAttribute('data-code');
                 if (targetCodeId) copyCodeById(targetCodeId);
             });
         });
 
-        // Resaltar todos los códigos por si algunos están visibles? pero todos están ocultos al inicio, pero al abrir se resaltan.
-        // Pre-resaltar no es necesario, pero lo hacemos por si alguno se abriera con open por error.
         if (typeof hljs !== 'undefined') {
             document.querySelectorAll('pre code').forEach(block => hljs.highlightElement(block));
         }
