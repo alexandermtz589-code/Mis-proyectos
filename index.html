@@ -3,15 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>⚡ DevC++ | Mis Ejercicios de C++ - Tema Oscuro Gamer</title>
-    <!-- Google Fonts + Font Awesome 6 (iconos) -->
+    <title>⚡ C++ Acordeón Dev | Tema VS Code Oscuro</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Highlight.js: Tema VS Code Dark (estilo vs2015 similar al editor) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <!-- Habilitar resaltado de C++ automático -->
-    <script>hljs.highlightAll();</script>
     <style>
         * {
             margin: 0;
@@ -20,176 +16,151 @@
         }
 
         body {
-            background: radial-gradient(circle at 20% 30%, #0B0E14, #05070A);
-            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at 20% 30%, #0B0E14, #030507);
+            font-family: 'Inter', sans-serif;
             color: #e3e6eb;
-            line-height: 1.5;
             padding: 2rem 1.5rem;
             min-height: 100vh;
         }
 
-        /* contenedor principal */
         .container {
-            max-width: 1400px;
+            max-width: 1100px;
             margin: 0 auto;
-            width: 100%;
         }
 
-        /* Header estilo "gamer dev" */
+        /* Header */
         .header {
-            margin-bottom: 3rem;
             text-align: center;
+            margin-bottom: 2.5rem;
             border-bottom: 2px solid rgba(0, 255, 255, 0.2);
-            padding-bottom: 1.5rem;
-            position: relative;
+            padding-bottom: 1.2rem;
         }
         .header h1 {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 2.2rem;
-            font-weight: 600;
-            letter-spacing: -0.5px;
+            font-size: 2rem;
             background: linear-gradient(135deg, #C792EA, #4EC5F0);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 0 5px rgba(79, 193, 233, 0.3);
         }
         .header h1 i {
             background: none;
             color: #4EC5F0;
             margin-right: 12px;
-            font-size: 2rem;
-            text-shadow: 0 0 6px cyan;
         }
         .header p {
-            margin-top: 0.75rem;
             color: #9aa7b9;
-            font-weight: 400;
-            font-size: 1rem;
             background: rgba(0, 20, 30, 0.5);
             display: inline-block;
             padding: 0.3rem 1.2rem;
             border-radius: 40px;
-            backdrop-filter: blur(2px);
-            border: 1px solid rgba(78, 197, 240, 0.3);
-        }
-        .badge-terminal {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 1rem;
-        }
-        .badge-terminal span {
-            font-family: monospace;
-            background: #1A1E2A;
-            padding: 0.3rem 0.9rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            border-left: 3px solid #4EC5F0;
-            color: #B0D9FF;
+            font-size: 0.9rem;
+            margin-top: 10px;
         }
 
-        /* Grid responsivo: dos columnas en PC, una en móvil */
-        .exercises-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 1rem;
-        }
-
-        /* Cards estilo VSCode widget */
-        .card {
-            background: #0F1117;
-            border-radius: 1.25rem;
-            border: 1px solid rgba(46, 56, 77, 0.8);
-            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(78, 197, 240, 0.1) inset;
-            transition: transform 0.2s ease, border-color 0.2s;
-            backdrop-filter: blur(1px);
-            overflow: hidden;
+        /* ========= ACORDEÓN ========= */
+        .accordion {
             display: flex;
             flex-direction: column;
-        }
-        .card:hover {
-            border-color: #4EC5F0;
-            transform: translateY(-4px);
-            box-shadow: 0 24px 40px -14px black;
+            gap: 1rem;
         }
 
-        /* cabecera de cada card */
-        .card-header {
-            padding: 1.3rem 1.5rem 0.8rem 1.5rem;
-            border-bottom: 1px solid #1e2432;
+        .accordion-item {
+            background: #0F1117;
+            border: 1px solid #262e3f;
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+        .accordion-item:hover {
+            border-color: #4EC5F0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        }
+
+        /* Botón del acordeón (título) */
+        .accordion-header {
             background: #0C0F15;
+            padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            cursor: pointer;
+            user-select: none;
+            gap: 15px;
             flex-wrap: wrap;
-            gap: 12px;
         }
-        .title-exercise {
+        .title-group {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             flex-wrap: wrap;
         }
-        .title-exercise i {
-            font-size: 1.8rem;
+        .title-group i {
+            font-size: 1.6rem;
             color: #4EC5F0;
-            filter: drop-shadow(0 0 3px #00a6c4);
         }
-        .title-exercise h2 {
+        .title-group h3 {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1.4rem;
             font-weight: 500;
-            letter-spacing: -0.3px;
-            background: linear-gradient(120deg, #ffffff, #9cdcfe);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
+            font-size: 1.25rem;
         }
-        .btn-copy {
+        .badge-dif {
+            background: #1E2438;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #9cdcfe;
+        }
+        .accordion-header .btn-copy {
             background: #1E2438;
             border: none;
             color: #bbd9ff;
-            font-size: 0.85rem;
-            font-weight: 500;
-            padding: 0.45rem 1rem;
-            border-radius: 40px;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
             font-family: monospace;
-            transition: all 0.2s;
-            border: 1px solid #2a3346;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.2s;
         }
-        .btn-copy i {
-            font-size: 0.9rem;
-        }
-        .btn-copy:hover {
+        .accordion-header .btn-copy:hover {
             background: #2A3650;
             border-color: #4EC5F0;
             color: white;
-            box-shadow: 0 0 8px rgba(78, 197, 240, 0.4);
+        }
+        .arrow-icon {
+            font-size: 1.2rem;
+            color: #7f8c9a;
+            transition: transform 0.3s;
         }
 
-        .desc {
-            padding: 0.8rem 1.5rem 0rem 1.5rem;
+        /* Contenido desplegable */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #0A0C12;
+            border-top: 1px solid transparent;
+        }
+        .accordion-content.open {
+            max-height: 800px; /* suficiente para códigos largos */
+            border-top-color: #2a3346;
+        }
+        .code-wrapper {
+            padding: 1rem 1.5rem 1.5rem;
+        }
+        .desc-ex {
+            background: #0B0E14;
+            margin: 0 1.5rem;
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
             font-size: 0.9rem;
             color: #abb2bf;
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            border-bottom: 1px dashed #202433;
-        }
-        .desc i {
-            color: #5f7f9e;
-        }
-
-        /* Area de código estilo VSCode */
-        .code-container {
-            padding: 0 1.5rem 1.5rem 1.5rem;
-            flex: 1;
+            border-left: 3px solid #4EC5F0;
+            margin-bottom: 0.5rem;
         }
         pre {
             margin: 0;
@@ -198,82 +169,41 @@
             border-radius: 1rem;
             border: 1px solid #262e3f;
             overflow-x: auto;
-            white-space: pre-wrap;
-            word-break: break-word;
-            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.85rem;
-            line-height: 1.5;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
         }
         code {
             font-family: 'JetBrains Mono', monospace;
-            background: transparent !important;
         }
-        /* Ajustes para highlight.js dentro del tema oscuro */
         .hljs {
             background: #0A0C12 !important;
         }
 
-        /* footer pequeño */
+        /* Footer y responsive */
         .footer-note {
             margin-top: 3rem;
             text-align: center;
             font-size: 0.8rem;
             color: #5e6f8d;
             border-top: 1px solid #1a1f2b;
-            padding-top: 1.8rem;
-            display: flex;
-            justify-content: center;
-            gap: 28px;
-            flex-wrap: wrap;
+            padding-top: 1.5rem;
         }
-        .footer-note i {
-            margin-right: 6px;
-            color: #3f8fbf;
-        }
-
-        /* RESPONSIVE: para celulares apilar */
-        @media (max-width: 800px) {
+        @media (max-width: 600px) {
             body {
                 padding: 1rem;
             }
-            .exercises-grid {
-                grid-template-columns: 1fr;
-                gap: 1.8rem;
-            }
-            .card-header {
+            .accordion-header {
                 flex-direction: column;
                 align-items: flex-start;
             }
             .btn-copy {
                 align-self: flex-end;
             }
-            .header h1 {
-                font-size: 1.7rem;
-            }
             pre {
                 font-size: 0.75rem;
-                padding: 0.8rem;
             }
         }
 
-        /* scrollbar estilo gaming */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #10131c;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #2c3e5c;
-            border-radius: 6px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #4EC5F0;
-        }
-
-        /* Tooltip moderno para copiado */
         .toast-msg {
             position: fixed;
             bottom: 20px;
@@ -287,7 +217,6 @@
             font-family: monospace;
             font-size: 0.85rem;
             border: 1px solid #4EC5F0;
-            box-shadow: 0 0 15px rgba(0,255,255,0.2);
             z-index: 999;
             opacity: 0;
             transition: opacity 0.2s;
@@ -296,34 +225,32 @@
     </style>
 </head>
 <body>
-
 <div class="container">
     <div class="header">
-        <h1><i class="fas fa-terminal"></i> C++ DARK LAB</h1>
-        <p>⚡ ejercicios resueltos | estilo VS Code · tema gamer dev</p>
-        <div class="badge-terminal">
-            <span><i class="fas fa-code"></i> 2 ejercicios</span>
-            <span><i class="fas fa-mobile-alt"></i> full responsive</span>
-            <span><i class="fas fa-copy"></i> copia con un click</span>
-        </div>
+        <h1><i class="fas fa-code-branch"></i> C++ Acordeón PRO</h1>
+        <p><i class="fas fa-chevron-circle-down"></i> Haz clic en cualquier ejercicio para ver el código | Tema VS Code oscuro</p>
     </div>
 
-    <div class="exercises-grid">
-        <!-- ========= EJERCICIO 1: Operaciones con tres enteros ========= -->
-        <div class="card" id="card-ex1">
-            <div class="card-header">
-                <div class="title-exercise">
+    <div class="accordion" id="accordionCpp">
+        <!-- EJERCICIO 1 - Operaciones con 3 enteros -->
+        <div class="accordion-item" data-ex-id="1">
+            <div class="accordion-header">
+                <div class="title-group">
                     <i class="fas fa-calculator"></i>
-                    <h2>#01 · Opers. con 3 enteros</h2>
+                    <h3>#01 · Suma, resta, producto y cociente</h3>
+                    <span class="badge-dif"><i class="fas fa-star-of-life"></i> Básico</span>
                 </div>
-                <button class="btn-copy" data-code-id="code1"><i class="fas fa-copy"></i> copiar código</button>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <button class="btn-copy" data-code-id="code1"><i class="fas fa-copy"></i> Copiar</button>
+                    <i class="fas fa-chevron-down arrow-icon"></i>
+                </div>
             </div>
-            <div class="desc">
-                <i class="fas fa-info-circle"></i>
-                <span>Lee tres enteros, muestra suma, diferencia, producto y cociente entero consecutivo.</span>
-            </div>
-            <div class="code-container">
-                <pre><code id="code1" class="language-cpp">#include &lt;iostream&gt;
+            <div class="accordion-content">
+                <div class="desc-ex">
+                    <i class="fas fa-info-circle"></i> Lee tres enteros y muestra suma, diferencia (a-b-c), producto y cociente entero (a/b/c).
+                </div>
+                <div class="code-wrapper">
+                    <pre><code id="code1" class="language-cpp">#include &lt;iostream&gt;
 using namespace std;
 
 int main()
@@ -347,158 +274,190 @@ int main()
 
     return 0;
 }</code></pre>
+                </div>
             </div>
         </div>
 
-        <!-- ========= EJERCICIO 2: Contador de vocales con el código exacto (incluye comentario explicativo) ========= -->
-        <div class="card" id="card-ex2">
-            <div class="card-header">
-                <div class="title-exercise">
+        <!-- EJERCICIO 2 - Contador de vocales -->
+        <div class="accordion-item" data-ex-id="2">
+            <div class="accordion-header">
+                <div class="title-group">
                     <i class="fas fa-microphone-alt"></i>
-                    <h2>#02 · Contador de vocales</h2>
+                    <h3>#02 · Contar vocales en una palabra</h3>
+                    <span class="badge-dif"><i class="fas fa-star-of-life"></i> Strings</span>
                 </div>
-                <button class="btn-copy" data-code-id="code2"><i class="fas fa-copy"></i> copiar código</button>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <button class="btn-copy" data-code-id="code2"><i class="fas fa-copy"></i> Copiar</button>
+                    <i class="fas fa-chevron-down arrow-icon"></i>
+                </div>
             </div>
-            <div class="desc">
-                <i class="fas fa-info-circle"></i>
-                <span>Ingresa una palabra y cuenta cuántas vocales tiene (a, e, i, o, u).</span>
-            </div>
-            <div class="code-container">
-                <pre><code id="code2" class="language-cpp">/* 2. Contar vocales en una palabra
-
-Pide una palabra (string) y cuenta cuántas vocales tiene.
-
-Ejemplo:
-
-Entrada:
-computadora
-
-Salida:
-Cantidad de vocales: 5*/
+            <div class="accordion-content">
+                <div class="desc-ex">
+                    <i class="fas fa-info-circle"></i> Pide una palabra (string) y cuenta cuántas vocales minúsculas tiene. Ejemplo: "computadora" → 5.
+                </div>
+                <div class="code-wrapper">
+                    <pre><code id="code2" class="language-cpp">/* 2. Contar vocales en una palabra */
 
 #include &lt;iostream&gt; 
 using namespace std;
 
 int main() {
-    //DECLARACION DE VARIABLES //tipos??? = STRING 
-    //tipo de variable = string la variable es palabra
-    string palabra;//sirve para almacenar el valor dado por el usuario
-    //tipo de variable = int(entero) la variable contador
-    int contador = 0;//para contar las vocales
+    string palabra;
+    int contador = 0;
     
-    cout&lt;&lt;"Ingresa la palabra: ";//muestra mensaje en la pantalla
-    cin&gt;&gt;palabra;//almacena la palabra dada en la variable palabra
+    cout&lt;&lt;"Ingresa la palabra: ";
+    cin&gt;&gt;palabra;
     
-    //LOGICA DE DATOS //que es lo que haremos con lo que da el usuario??
-    //ciclo for desde 0 hasta el  tamaño de palabra de uno en uno
-    //iterar sobre la palabra dada y comparar letra * la poscion actual
     for(int i = 0; i&lt; palabra.length(); i++){
-        //CONDICION de comparacion posicion actual con vocales 
         if(palabra[i] == 'a'||palabra[i] == 'e'||
            palabra[i] == 'i'||palabra[i] == 'o'||
            palabra[i] == 'u')
         {
-           contador++;//se suma el contador si hay vocal
-        }//termina condicion
+           contador++;
+        }
     }
     
-    //RESULTADO
-    //enseñar la salida de la vocales con la variable que la almaceno
     cout&lt;&lt;"La palabra "&lt;&lt;palabra&lt;&lt;endl;
     cout&lt;&lt;"Vocales que tiene es:"&lt;&lt;contador;
 
     return 0;
 }</code></pre>
+                </div>
             </div>
         </div>
+
+        <!-- EJEMPLO DE CÓMO AGREGAR MÁS EJERCICIOS (descomentar o duplicar) 
+        <div class="accordion-item">
+            <div class="accordion-header">... </div>
+            <div class="accordion-content">... </div>
+        </div>
+        -->
     </div>
 
     <div class="footer-note">
-        <span><i class="fas fa-mouse-pointer"></i> Código C++ listo para copiar</span>
-        <span><i class="fab fa-windows"></i> Tema oscuro inspirado en VS Code</span>
-        <span><i class="fas fa-laptop-code"></i> Ejercicios académicos</span>
+        <span><i class="fas fa-plus-circle"></i> Agrega más ejercicios copiando el bloque <strong>.accordion-item</strong></span>
+        <span><i class="fas fa-sync-alt"></i> Diseño responsivo y desplegable</span>
+        <span><i class="fas fa-terminal"></i> C++ con resaltado automático</span>
     </div>
 </div>
 
-<!-- Toast de notificación -->
-<div id="copyToast" class="toast-msg">📋 ¡Código copiado al portapapeles!</div>
+<div id="copyToast" class="toast-msg">📋 Código copiado al portapapeles</div>
 
 <script>
     (function() {
-        // Función para mostrar notificación flotante
-        const toast = document.getElementById('copyToast');
-        let toastTimeout = null;
-
-        function showToast(message = "📋 ¡Código copiado al portapapeles!") {
-            if (toastTimeout) clearTimeout(toastTimeout);
-            toast.style.opacity = '1';
-            toast.textContent = message;
-            toastTimeout = setTimeout(() => {
-                toast.style.opacity = '0';
-            }, 1800);
+        // ---- Acordeón: toggle content ----
+        const items = document.querySelectorAll('.accordion-item');
+        
+        function closeAllExcept(exceptItem) {
+            items.forEach(item => {
+                const content = item.querySelector('.accordion-content');
+                const arrow = item.querySelector('.arrow-icon');
+                if (item !== exceptItem && content && content.classList.contains('open')) {
+                    content.classList.remove('open');
+                    if (arrow) arrow.style.transform = 'rotate(0deg)';
+                }
+            });
         }
 
-        // Función copiar texto puro (sin etiquetas, manteniendo indentación)
-        async function copyCodeToClipboard(codeElementId) {
-            const codeElement = document.getElementById(codeElementId);
-            if (!codeElement) return false;
+        items.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            const content = item.querySelector('.accordion-content');
+            const arrow = item.querySelector('.arrow-icon');
             
-            // Obtenemos el texto plano del código (el elemento <code> puede tener hijos highlight, pero innerText devuelve el texto plano perfecto)
-            let codeText = codeElement.innerText;
-            // Pequeño ajuste: Eliminar posibles saltos de línea extraños al inicio? se mantiene fiel.
-            if (!codeText) return false;
+            // Abrir/cerrar al hacer clic en el header (excepto si se hizo clic en botón copiar)
+            header.addEventListener('click', (e) => {
+                // Evitar que el click en el botón de copiar dispare el acordeón
+                if (e.target.closest('.btn-copy')) return;
+                
+                const isOpen = content.classList.contains('open');
+                if (!isOpen) {
+                    closeAllExcept(item);
+                    content.classList.add('open');
+                    if (arrow) arrow.style.transform = 'rotate(180deg)';
+                    // Resaltar sintaxis si hay código dentro (por si acaso)
+                    if (typeof hljs !== 'undefined') {
+                        const codeBlocks = content.querySelectorAll('pre code');
+                        codeBlocks.forEach(block => hljs.highlightElement(block));
+                    }
+                } else {
+                    content.classList.remove('open');
+                    if (arrow) arrow.style.transform = 'rotate(0deg)';
+                }
+            });
             
+            // Aseguramos que las flechas tengan estado inicial
+            if (arrow && content.classList.contains('open')) arrow.style.transform = 'rotate(180deg)';
+            else if (arrow) arrow.style.transform = 'rotate(0deg)';
+        });
+
+        // ---- Función copiar ----
+        const toast = document.getElementById('copyToast');
+        let toastTimeout;
+        function showToast(msg) {
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toast.textContent = msg || '📋 Código copiado';
+            toast.style.opacity = '1';
+            toastTimeout = setTimeout(() => toast.style.opacity = '0', 1800);
+        }
+
+        async function copyCode(codeId) {
+            const codeElem = document.getElementById(codeId);
+            if (!codeElem) return false;
+            let rawCode = codeElem.innerText;
             try {
-                await navigator.clipboard.writeText(codeText);
-                showToast(`✅ Copiado: ${codeElementId === 'code1' ? 'Ejercicio 1' : 'Contador de vocales'} listo para pegar`);
+                await navigator.clipboard.writeText(rawCode);
+                showToast(`✅ Copiado: ${codeId === 'code1' ? 'Ejercicio 1' : 'Ejercicio 2'}`);
                 return true;
             } catch (err) {
-                console.warn('Error al copiar: ', err);
-                // fallback para navegadores antiguos
-                const textarea = document.createElement('textarea');
-                textarea.value = codeText;
-                document.body.appendChild(textarea);
-                textarea.select();
+                // fallback
+                const ta = document.createElement('textarea');
+                ta.value = rawCode;
+                document.body.appendChild(ta);
+                ta.select();
                 document.execCommand('copy');
-                document.body.removeChild(textarea);
-                showToast(`⚠️ Copiado (método secundario): ${codeElementId === 'code1' ? 'Ejercicio 1' : 'Ejercicio 2'}`);
+                document.body.removeChild(ta);
+                showToast(`📋 Copiado (manual)`);
                 return true;
             }
         }
 
-        // Asignar eventos a los botones de copiar
-        const copyButtons = document.querySelectorAll('.btn-copy');
-        copyButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = button.getAttribute('data-code-id');
-                if (targetId) {
-                    copyCodeToClipboard(targetId);
-                } else {
-                    // fallback: detectar card
-                    const parentCard = button.closest('.card');
-                    if (parentCard) {
-                        const codeBlock = parentCard.querySelector('code');
-                        if (codeBlock && codeBlock.id) {
-                            copyCodeToClipboard(codeBlock.id);
-                        } else if (codeBlock) {
-                            // si no tiene id lo tratamos manual
-                            const codeText = codeBlock.innerText;
-                            navigator.clipboard.writeText(codeText).then(() => showToast("Código copiado")).catch(()=> showToast("Copiado con éxito"));
+        // Asignar eventos a todos los botones copiar
+        const copyBtns = document.querySelectorAll('.btn-copy');
+        copyBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Evita que el acordeón se active
+                const targetId = btn.getAttribute('data-code-id');
+                if (targetId) copyCode(targetId);
+                else {
+                    // búsqueda alternativa dentro del mismo accordion-item
+                    const parentItem = btn.closest('.accordion-item');
+                    if (parentItem) {
+                        const codeBlock = parentItem.querySelector('code');
+                        if (codeBlock && codeBlock.id) copyCode(codeBlock.id);
+                        else if (codeBlock) {
+                            let txt = codeBlock.innerText;
+                            navigator.clipboard.writeText(txt).catch(() => {
+                                const ta = document.createElement('textarea');
+                                ta.value = txt;
+                                document.body.appendChild(ta);
+                                ta.select();
+                                document.execCommand('copy');
+                                document.body.removeChild(ta);
+                            });
+                            showToast('Código copiado');
                         }
                     }
                 }
             });
         });
 
-        // Aseguramos que el resaltado de sintaxis se aplique después de cualquier posible mod dinámica
-        // Ya se ejecutó hljs.highlightAll() al cargar, pero si por algún motivo el DOM necesita reaplicar, lo forzamos.
+        // Resaltar inicialmente los códigos visibles? el primero quizás mejor mantenerlo cerrado para no amontonar
+        // Si algún contenido estuviera abierto por defecto? No, todos cerrados. Cuando se abra se resaltará.
+        // Pero si alguien quiere resaltar a la fuerza los ocultos, no es necesario.
+        // Forzamos hljs a todos los bloques pero están ocultos, igual funciona en algunos navegadores.
         if (typeof hljs !== 'undefined') {
-            hljs.highlightAll();
+            document.querySelectorAll('pre code').forEach(block => hljs.highlightElement(block));
         }
-        
-        // Agregamos efecto de sombra adicional a las cards cuando se copia desde botones específicos? no necesario
-        console.log("✨ DevC++ Dark Lab — Listo para codear");
     })();
 </script>
 </body>
