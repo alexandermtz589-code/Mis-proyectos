@@ -2,414 +2,504 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visual Studio Code - Mis Códigos C++</title>
-    
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" id="prism-theme">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>⚡ DevC++ | Mis Ejercicios de C++ - Tema Oscuro Gamer</title>
+    <!-- Google Fonts + Font Awesome 6 (iconos) -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Highlight.js: Tema VS Code Dark (estilo vs2015 similar al editor) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!-- Habilitar resaltado de C++ automático -->
+    <script>hljs.highlightAll();</script>
     <style>
-        /* ==========================================
-           VARIABLES Y PALETA DE COLORES (VS CODE)
-           ========================================== */
-        :root {
-            /* Modo Oscuro por defecto (VS Code Dark+) */
-            --bg-main: #1e1e1e;
-            --bg-window: #181818;
-            --bg-editor: #1e1e1e;
-            --bg-header: #252526;
-            --bg-tab-active: #1e1e1e;
-            --bg-tab-inactive: #2d2d2d;
-            --text-main: #d4d4d4;
-            --text-muted: #858585;
-            --border-color: #3c3c3c;
-            --accent-color: #007acc;
-            --accent-hover: #0062a3;
-            --font-mono: 'Consolas', 'Courier New', Courier, monospace;
-        }
-
-        body.light {
-            /* Modo Claro (VS Code Light+) */
-            --bg-main: #f3f3f3;
-            --bg-window: #ffffff;
-            --bg-editor: #ffffff;
-            --bg-header: #2c2c2c; /* Mantiene un contraste elegante */
-            --bg-tab-active: #ffffff;
-            --bg-tab-inactive: #ececec;
-            --text-main: #333333;
-            --text-muted: #717171;
-            --border-color: #e4e4e4;
-            --accent-color: #007acc;
-            --accent-hover: #0062a3;
-        }
-
-        /* ==========================================
-           ESTILOS BASE Y RESPONSIVOS
-           ========================================== */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            transition: background-color 0.3s, color 0.3s;
+            background: radial-gradient(circle at 20% 30%, #0B0E14, #05070A);
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            color: #e3e6eb;
             line-height: 1.5;
+            padding: 2rem 1.5rem;
             min-height: 100vh;
+        }
+
+        /* contenedor principal */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Header estilo "gamer dev" */
+        .header {
+            margin-bottom: 3rem;
+            text-align: center;
+            border-bottom: 2px solid rgba(0, 255, 255, 0.2);
+            padding-bottom: 1.5rem;
+            position: relative;
+        }
+        .header h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #C792EA, #4EC5F0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 5px rgba(79, 193, 233, 0.3);
+        }
+        .header h1 i {
+            background: none;
+            color: #4EC5F0;
+            margin-right: 12px;
+            font-size: 2rem;
+            text-shadow: 0 0 6px cyan;
+        }
+        .header p {
+            margin-top: 0.75rem;
+            color: #9aa7b9;
+            font-weight: 400;
+            font-size: 1rem;
+            background: rgba(0, 20, 30, 0.5);
+            display: inline-block;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(78, 197, 240, 0.3);
+        }
+        .badge-terminal {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 1rem;
+        }
+        .badge-terminal span {
+            font-family: monospace;
+            background: #1A1E2A;
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border-left: 3px solid #4EC5F0;
+            color: #B0D9FF;
+        }
+
+        /* Grid responsivo: dos columnas en PC, una en móvil */
+        .exercises-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        /* Cards estilo VSCode widget */
+        .card {
+            background: #0F1117;
+            border-radius: 1.25rem;
+            border: 1px solid rgba(46, 56, 77, 0.8);
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(78, 197, 240, 0.1) inset;
+            transition: transform 0.2s ease, border-color 0.2s;
+            backdrop-filter: blur(1px);
+            overflow: hidden;
             display: flex;
             flex-direction: column;
         }
+        .card:hover {
+            border-color: #4EC5F0;
+            transform: translateY(-4px);
+            box-shadow: 0 24px 40px -14px black;
+        }
 
-        /* Encabezado Superior */
-        header {
-            background-color: var(--bg-header);
-            color: #ffffff;
-            padding: 15px 24px;
+        /* cabecera de cada card */
+        .card-header {
+            padding: 1.3rem 1.5rem 0.8rem 1.5rem;
+            border-bottom: 1px solid #1e2432;
+            background: #0C0F15;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            z-index: 10;
+            flex-wrap: wrap;
+            gap: 12px;
         }
-
-        .header-title h1 {
-            font-size: 1.3rem;
+        .title-exercise {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-weight: 600;
+            gap: 12px;
+            flex-wrap: wrap;
         }
-
-        .header-title p {
-            font-size: 0.8rem;
-            color: #aaaaaa;
-            margin-top: 2px;
+        .title-exercise i {
+            font-size: 1.8rem;
+            color: #4EC5F0;
+            filter: drop-shadow(0 0 3px #00a6c4);
         }
-
-        /* Botón de cambio de tema */
-        .theme-toggle {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: #ffffff;
-            padding: 8px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-        }
-
-        .theme-toggle:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: scale(1.05);
-        }
-
-        /* Contenedor Grid Principal */
-        .workspace {
-            width: 95%;
-            max-width: 1600px;
-            margin: 20px auto;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            flex-grow: 1;
-            padding-bottom: 20px;
-        }
-
-        /* Diseño para pantallas de PC (Lado a Lado) */
-        @media (min-width: 992px) {
-            .workspace {
-                grid-template-columns: 1fr 1fr;
-                height: calc(100vh - 120px);
-                align-items: stretch;
-            }
-            .panel {
-                display: flex;
-                flex-direction: column;
-                height: 100%;
-            }
-            .vsc-window {
-                flex-grow: 1;
-                display: flex;
-                flex-direction: column;
-            }
-            .window-body {
-                flex-grow: 1;
-                height: 0; /* Obliga a respetar el flex */
-            }
-            textarea, pre {
-                height: 100% !important;
-            }
-        }
-
-        /* ==========================================
-           CONTENEDORES ESTILO COMPONENTE VS CODE
-           ========================================== */
-        .vsc-window {
-            background-color: var(--bg-window);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Barra de pestañas simulada */
-        .window-header {
-            background-color: var(--bg-tab-inactive);
-            display: flex;
-            align-items: center;
-            padding: 0 12px;
-            height: 38px;
-            border-bottom: 1px solid var(--border-color);
-            user-select: none;
-        }
-
-        /* Botones Mac de ventana */
-        .window-dots {
-            display: flex;
-            gap: 6px;
-            margin-right: 16px;
-        }
-
-        .dot {
-            width: 11px;
-            height: 11px;
-            border-radius: 50%;
-        }
-        .dot.close { background-color: #ff5f56; }
-        .dot.minimize { background-color: #ffbd2e; }
-        .dot.maximize { background-color: #27c93f; }
-
-        /* Pestaña */
-        .tab {
-            background-color: var(--bg-tab-active);
-            color: var(--text-main);
-            padding: 0 16px;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.85rem;
-            border-right: 1px solid var(--border-color);
-            font-family: var(--font-mono);
-        }
-
-        .tab .file-icon {
-            font-size: 16px;
-            color: #519aba; /* Azul característico de C++ en VSC */
-        }
-
-        .tab .preview-icon {
-            font-size: 16px;
-            color: #cb8e41;
-        }
-
-        /* Cuerpo interno de las ventanas */
-        .window-body {
-            position: relative;
-            background-color: var(--bg-editor);
-        }
-
-        /* Input del Editor (Textarea) */
-        textarea {
-            width: 100%;
-            height: 380px;
-            border: none;
-            outline: none;
-            padding: 16px;
-            background-color: var(--bg-editor);
-            color: var(--text-main);
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            resize: none;
-            line-height: 1.5;
-        }
-
-        /* Contenedor de Vista Previa */
-        .preview-content {
-            height: 380px;
-            overflow: auto;
-            background-color: var(--bg-editor);
-            padding: 16px;
-        }
-
-        pre, code {
-            font-family: var(--font-mono) !important;
-            font-size: 0.9rem !important;
-            background: transparent !important;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-
-        /* Ajustes menores para sobreescribir el tema Prism predeterminado */
-        .token.comment { color: #6a9955 !important; }
-
-        /* ==========================================
-           BOTONES DE ACCIÓN
-           ========================================== */
-        .actions-bar {
-            padding: 12px 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        .btn-run {
-            background-color: var(--accent-color);
-            color: #ffffff;
-            border: none;
-            padding: 10px 22px;
-            border-radius: 6px;
-            font-size: 0.95rem;
+        .title-exercise h2 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.4rem;
             font-weight: 500;
+            letter-spacing: -0.3px;
+            background: linear-gradient(120deg, #ffffff, #9cdcfe);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .btn-copy {
+            background: #1E2438;
+            border: none;
+            color: #bbd9ff;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 0.45rem 1rem;
+            border-radius: 40px;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 4px 12px rgba(0, 122, 204, 0.3);
-            transition: background 0.2s, transform 0.1s;
+            font-family: monospace;
+            transition: all 0.2s;
+            border: 1px solid #2a3346;
+        }
+        .btn-copy i {
+            font-size: 0.9rem;
+        }
+        .btn-copy:hover {
+            background: #2A3650;
+            border-color: #4EC5F0;
+            color: white;
+            box-shadow: 0 0 8px rgba(78, 197, 240, 0.4);
         }
 
-        .btn-run:hover {
-            background-color: var(--accent-hover);
+        .desc {
+            padding: 0.8rem 1.5rem 0rem 1.5rem;
+            font-size: 0.9rem;
+            color: #abb2bf;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            border-bottom: 1px dashed #202433;
+        }
+        .desc i {
+            color: #5f7f9e;
         }
 
-        .btn-run:active {
-            transform: scale(0.98);
+        /* Area de código estilo VSCode */
+        .code-container {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            flex: 1;
+        }
+        pre {
+            margin: 0;
+            padding: 1rem !important;
+            background: #0A0C12 !important;
+            border-radius: 1rem;
+            border: 1px solid #262e3f;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+        }
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            background: transparent !important;
+        }
+        /* Ajustes para highlight.js dentro del tema oscuro */
+        .hljs {
+            background: #0A0C12 !important;
+        }
+
+        /* footer pequeño */
+        .footer-note {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #5e6f8d;
+            border-top: 1px solid #1a1f2b;
+            padding-top: 1.8rem;
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+        .footer-note i {
+            margin-right: 6px;
+            color: #3f8fbf;
+        }
+
+        /* RESPONSIVE: para celulares apilar */
+        @media (max-width: 800px) {
+            body {
+                padding: 1rem;
+            }
+            .exercises-grid {
+                grid-template-columns: 1fr;
+                gap: 1.8rem;
+            }
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .btn-copy {
+                align-self: flex-end;
+            }
+            .header h1 {
+                font-size: 1.7rem;
+            }
+            pre {
+                font-size: 0.75rem;
+                padding: 0.8rem;
+            }
+        }
+
+        /* scrollbar estilo gaming */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #10131c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2c3e5c;
+            border-radius: 6px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4EC5F0;
+        }
+
+        /* Tooltip moderno para copiado */
+        .toast-msg {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1E2438e6;
+            backdrop-filter: blur(12px);
+            color: #bbf0ff;
+            padding: 0.6rem 1.4rem;
+            border-radius: 60px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            border: 1px solid #4EC5F0;
+            box-shadow: 0 0 15px rgba(0,255,255,0.2);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
         }
     </style>
 </head>
-<body class="dark">
+<body>
 
-    <header>
-        <div class="header-title">
-            <h1><span class="material-icons-outlined">terminal</span> Mis Códigos C++</h1>
-            <p>Escribe y visualiza tus algoritmos con entorno profesional</p>
+<div class="container">
+    <div class="header">
+        <h1><i class="fas fa-terminal"></i> C++ DARK LAB</h1>
+        <p>⚡ ejercicios resueltos | estilo VS Code · tema gamer dev</p>
+        <div class="badge-terminal">
+            <span><i class="fas fa-code"></i> 2 ejercicios</span>
+            <span><i class="fas fa-mobile-alt"></i> full responsive</span>
+            <span><i class="fas fa-copy"></i> copia con un click</span>
         </div>
-        <button class="theme-toggle" onclick="cambiarTema()" title="Cambiar tema visual">
-            <span class="material-icons-outlined" id="theme-icon">light_mode</span>
-        </button>
-    </header>
+    </div>
 
-    <main class="workspace">
-        
-        <div class="panel">
-            <div class="vsc-window">
-                <div class="window-header">
-                    <div class="window-dots">
-                        <span class="dot close"></span>
-                        <span class="dot minimize"></span>
-                        <span class="dot maximize"></span>
-                    </div>
-                    <div class="tab">
-                        <span class="material-icons-outlined file-icon">code</span>
-                        main.cpp
-                    </div>
+    <div class="exercises-grid">
+        <!-- ========= EJERCICIO 1: Operaciones con tres enteros ========= -->
+        <div class="card" id="card-ex1">
+            <div class="card-header">
+                <div class="title-exercise">
+                    <i class="fas fa-calculator"></i>
+                    <h2>#01 · Opers. con 3 enteros</h2>
                 </div>
-                <div class="window-body">
-                    <textarea id="codigo" spellcheck="false" placeholder="// Escribe tu código fuente aquí...">// Pega aquí tu código C++
-
-#include <iostream>
+                <button class="btn-copy" data-code-id="code1"><i class="fas fa-copy"></i> copiar código</button>
+            </div>
+            <div class="desc">
+                <i class="fas fa-info-circle"></i>
+                <span>Lee tres enteros, muestra suma, diferencia, producto y cociente entero consecutivo.</span>
+            </div>
+            <div class="code-container">
+                <pre><code id="code1" class="language-cpp">#include &lt;iostream&gt;
 using namespace std;
 
 int main()
 {
-    int a, b, c;
+    int a,b,c;
 
-    cout << "Dame un entero:" << endl;
-    cin >> a;
+    cout&lt;&lt;"Dame un entero:"&lt;&lt;endl;
+    cin&gt;&gt;a;
 
-    cout << "Dame otro entero:" << endl;
-    cin >> b;
+    cout&lt;&lt;"Dame otro entero:"&lt;&lt;endl;
+    cin&gt;&gt;b;
 
-    cout << "Dame otro entero:" << endl;
-    cin >> c;
+    cout&lt;&lt;"Dame otro entero:"&lt;&lt;endl;
+    cin&gt;&gt;c;
 
-    cout << "\n--- RESULTADOS ---" << endl;
-    cout << "Suma: " << a + b + c << endl;
-    cout << "Diferencia: " << a - b - c << endl;
-    cout << "Producto: " << a * b * c << endl;
-    cout << "Cociente: " << a / b / c << endl;
+    cout&lt;&lt;"RESULTADOS"&lt;&lt;endl;
+    cout&lt;&lt;"Suma: "&lt;&lt;a+b+c&lt;&lt;endl;
+    cout&lt;&lt;"Diferencia: "&lt;&lt;a-b-c&lt;&lt;endl;
+    cout&lt;&lt;"Producto: "&lt;&lt;a*b*c&lt;&lt;endl;
+    cout&lt;&lt;"Cociente: "&lt;&lt;a/b/c&lt;&lt;endl;
 
     return 0;
-}</textarea>
-                </div>
+}</code></pre>
             </div>
+        </div>
+
+        <!-- ========= EJERCICIO 2: Contador de vocales con el código exacto (incluye comentario explicativo) ========= -->
+        <div class="card" id="card-ex2">
+            <div class="card-header">
+                <div class="title-exercise">
+                    <i class="fas fa-microphone-alt"></i>
+                    <h2>#02 · Contador de vocales</h2>
+                </div>
+                <button class="btn-copy" data-code-id="code2"><i class="fas fa-copy"></i> copiar código</button>
+            </div>
+            <div class="desc">
+                <i class="fas fa-info-circle"></i>
+                <span>Ingresa una palabra y cuenta cuántas vocales tiene (a, e, i, o, u).</span>
+            </div>
+            <div class="code-container">
+                <pre><code id="code2" class="language-cpp">/* 2. Contar vocales en una palabra
+
+Pide una palabra (string) y cuenta cuántas vocales tiene.
+
+Ejemplo:
+
+Entrada:
+computadora
+
+Salida:
+Cantidad de vocales: 5*/
+
+#include &lt;iostream&gt; 
+using namespace std;
+
+int main() {
+    //DECLARACION DE VARIABLES //tipos??? = STRING 
+    //tipo de variable = string la variable es palabra
+    string palabra;//sirve para almacenar el valor dado por el usuario
+    //tipo de variable = int(entero) la variable contador
+    int contador = 0;//para contar las vocales
+    
+    cout&lt;&lt;"Ingresa la palabra: ";//muestra mensaje en la pantalla
+    cin&gt;&gt;palabra;//almacena la palabra dada en la variable palabra
+    
+    //LOGICA DE DATOS //que es lo que haremos con lo que da el usuario??
+    //ciclo for desde 0 hasta el  tamaño de palabra de uno en uno
+    //iterar sobre la palabra dada y comparar letra * la poscion actual
+    for(int i = 0; i&lt; palabra.length(); i++){
+        //CONDICION de comparacion posicion actual con vocales 
+        if(palabra[i] == 'a'||palabra[i] == 'e'||
+           palabra[i] == 'i'||palabra[i] == 'o'||
+           palabra[i] == 'u')
+        {
+           contador++;//se suma el contador si hay vocal
+        }//termina condicion
+    }
+    
+    //RESULTADO
+    //enseñar la salida de la vocales con la variable que la almaceno
+    cout&lt;&lt;"La palabra "&lt;&lt;palabra&lt;&lt;endl;
+    cout&lt;&lt;"Vocales que tiene es:"&lt;&lt;contador;
+
+    return 0;
+}</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <span><i class="fas fa-mouse-pointer"></i> Código C++ listo para copiar</span>
+        <span><i class="fab fa-windows"></i> Tema oscuro inspirado en VS Code</span>
+        <span><i class="fas fa-laptop-code"></i> Ejercicios académicos</span>
+    </div>
+</div>
+
+<!-- Toast de notificación -->
+<div id="copyToast" class="toast-msg">📋 ¡Código copiado al portapapeles!</div>
+
+<script>
+    (function() {
+        // Función para mostrar notificación flotante
+        const toast = document.getElementById('copyToast');
+        let toastTimeout = null;
+
+        function showToast(message = "📋 ¡Código copiado al portapapeles!") {
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toast.style.opacity = '1';
+            toast.textContent = message;
+            toastTimeout = setTimeout(() => {
+                toast.style.opacity = '0';
+            }, 1800);
+        }
+
+        // Función copiar texto puro (sin etiquetas, manteniendo indentación)
+        async function copyCodeToClipboard(codeElementId) {
+            const codeElement = document.getElementById(codeElementId);
+            if (!codeElement) return false;
             
-            <div class="actions-bar">
-                <button class="btn-run" onclick="mostrarCodigo()">
-                    <span class="material-icons-outlined">play_arrow</span> Formatear y Resaltar
-                </button>
-            </div>
-        </div>
-
-        <div class="panel">
-            <div class="vsc-window">
-                <div class="window-header">
-                    <div class="tab">
-                        <span class="material-icons-outlined preview-icon">visibility</span>
-                        Vista Previa Resaltada
-                    </div>
-                </div>
-                <div class="window-body">
-                    <div class="preview-content">
-                        <pre><code id="salida" class="language-cpp">// Presiona el botón verde de compilar para ver los resultados con colores estéticos.</code></pre>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
-
-    <script>
-        // Función para cambiar de tema (Light / Dark) conservando la armonía de VSC
-        function cambiarTema(){
-            const body = document.body;
-            const themeIcon = document.getElementById("theme-icon");
-            const prismTheme = document.getElementById("prism-theme");
-
-            body.classList.toggle("light");
-
-            if(body.classList.contains("light")){
-                themeIcon.textContent = "dark_mode";
-                // Cambia al tema claro oficial de Prism
-                prismTheme.href = "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css";
-            } else {
-                themeIcon.textContent = "light_mode";
-                // Cambia al tema oscuro de Prism (Tomorrow)
-                prismTheme.href = "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css";
+            // Obtenemos el texto plano del código (el elemento <code> puede tener hijos highlight, pero innerText devuelve el texto plano perfecto)
+            let codeText = codeElement.innerText;
+            // Pequeño ajuste: Eliminar posibles saltos de línea extraños al inicio? se mantiene fiel.
+            if (!codeText) return false;
+            
+            try {
+                await navigator.clipboard.writeText(codeText);
+                showToast(`✅ Copiado: ${codeElementId === 'code1' ? 'Ejercicio 1' : 'Contador de vocales'} listo para pegar`);
+                return true;
+            } catch (err) {
+                console.warn('Error al copiar: ', err);
+                // fallback para navegadores antiguos
+                const textarea = document.createElement('textarea');
+                textarea.value = codeText;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showToast(`⚠️ Copiado (método secundario): ${codeElementId === 'code1' ? 'Ejercicio 1' : 'Ejercicio 2'}`);
+                return true;
             }
-            
-            // Re-renderiza el código para adaptar los colores del resaltado al nuevo tema
-            mostrarCodigo();
         }
 
-        // Función para inyectar el código y activar Prism.js
-        function mostrarCodigo(){
-            const codigoIntroducido = document.getElementById("codigo").value;
-            const salidaElemento = document.getElementById("salida");
-
-            // Añadimos de forma segura el texto crudo
-            salidaElemento.textContent = codigoIntroducido;
-
-            // Comando clave de Prism para analizar el nuevo texto y transformarlo en código coloreado
-            Prism.highlightElement(salidaElemento);
-        }
-
-        // Ejecutar la renderización la primera vez de forma automática al cargar la web
-        window.addEventListener('DOMContentLoaded', () => {
-            mostrarCodigo();
+        // Asignar eventos a los botones de copiar
+        const copyButtons = document.querySelectorAll('.btn-copy');
+        copyButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = button.getAttribute('data-code-id');
+                if (targetId) {
+                    copyCodeToClipboard(targetId);
+                } else {
+                    // fallback: detectar card
+                    const parentCard = button.closest('.card');
+                    if (parentCard) {
+                        const codeBlock = parentCard.querySelector('code');
+                        if (codeBlock && codeBlock.id) {
+                            copyCodeToClipboard(codeBlock.id);
+                        } else if (codeBlock) {
+                            // si no tiene id lo tratamos manual
+                            const codeText = codeBlock.innerText;
+                            navigator.clipboard.writeText(codeText).then(() => showToast("Código copiado")).catch(()=> showToast("Copiado con éxito"));
+                        }
+                    }
+                }
+            });
         });
-    </script>
+
+        // Aseguramos que el resaltado de sintaxis se aplique después de cualquier posible mod dinámica
+        // Ya se ejecutó hljs.highlightAll() al cargar, pero si por algún motivo el DOM necesita reaplicar, lo forzamos.
+        if (typeof hljs !== 'undefined') {
+            hljs.highlightAll();
+        }
+        
+        // Agregamos efecto de sombra adicional a las cards cuando se copia desde botones específicos? no necesario
+        console.log("✨ DevC++ Dark Lab — Listo para codear");
+    })();
+</script>
 </body>
 </html>
