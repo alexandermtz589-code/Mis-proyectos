@@ -9,160 +9,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background: #0A0C12;
-            font-family: 'Inter', sans-serif;
-            color: #e1e4e8;
-            padding: 2rem 1.5rem;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        h1 {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.8rem;
-            text-align: center;
-            background: linear-gradient(135deg, #4EC5F0, #C792EA);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 0.5rem;
-        }
-        .sub {
-            text-align: center;
-            color: #8b9bb0;
-            margin-bottom: 2rem;
-            font-size: 0.9rem;
-        }
-        .exercises-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        .ex-card {
-            background: #0F1117;
-            border: 1px solid #282e3c;
-            border-radius: 1rem;
-            overflow: hidden;
-            transition: 0.2s;
-        }
-        .ex-card:hover {
-            border-color: #4EC5F0;
-        }
-        .ex-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            cursor: pointer;
-            background: #0C0F15;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .ex-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 600;
-        }
-        .ex-title i {
-            font-size: 1.4rem;
-            color: #4EC5F0;
-        }
-        .ex-title span {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.1rem;
-        }
-        .badge {
-            background: #1A1F2E;
-            padding: 0.2rem 0.7rem;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            color: #9cdcfe;
-        }
-        .toggle-icon {
-            color: #7e8aa2;
-            font-size: 1.2rem;
-            transition: transform 0.2s;
-        }
-        .ex-content {
-            display: none;
-            background: #0A0C12;
-            border-top: 1px solid #1e2432;
-            padding: 1rem 1.5rem 1.5rem;
-        }
-        .ex-content.open {
-            display: block;
-        }
-        .desc {
-            background: #0B0E14;
-            padding: 0.7rem 1rem;
-            border-radius: 12px;
-            margin-bottom: 1rem;
-            font-size: 0.85rem;
-            border-left: 3px solid #4EC5F0;
-        }
-        pre {
-            margin: 0;
-            border-radius: 12px;
-            overflow-x: auto;
-        }
-        code {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-        }
-        .btn-copy {
-            background: #1E2438;
-            border: none;
-            padding: 0.3rem 0.9rem;
-            border-radius: 30px;
-            color: #bbd9ff;
-            font-size: 0.75rem;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 1rem;
-            transition: 0.2s;
-        }
-        .btn-copy:hover {
-            background: #2a3650;
-            color: white;
-        }
-        .footer {
-            margin-top: 2.5rem;
-            text-align: center;
-            font-size: 0.75rem;
-            color: #5f6f8a;
-        }
-        @media (max-width: 550px) {
-            body { padding: 1rem; }
-            .ex-header { flex-direction: column; align-items: flex-start; }
-            .toggle-icon { align-self: flex-end; }
-        }
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #1E2438ee;
-            backdrop-filter: blur(8px);
-            padding: 0.5rem 1.2rem;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            border: 1px solid #4EC5F0;
-            color: #c7e9ff;
-            opacity: 0;
-            transition: 0.2s;
-            pointer-events: none;
-            z-index: 999;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0A0C12; font-family: 'Inter', sans-serif; color: #e1e4e8; padding: 2rem 1.5rem; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 { font-family: 'JetBrains Mono', monospace; font-size: 1.8rem; text-align: center; background: linear-gradient(135deg, #4EC5F0, #C792EA); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 0.5rem; }
+        .sub { text-align: center; color: #8b9bb0; margin-bottom: 2rem; font-size: 0.9rem; }
+        .exercises-list { display: flex; flex-direction: column; gap: 1rem; }
+        .ex-card { background: #0F1117; border: 1px solid #282e3c; border-radius: 1rem; overflow: hidden; transition: 0.2s; }
+        .ex-card:hover { border-color: #4EC5F0; }
+        .ex-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; cursor: pointer; background: #0C0F15; gap: 15px; flex-wrap: wrap; }
+        .ex-title { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+        .ex-title i { font-size: 1.4rem; color: #4EC5F0; }
+        .ex-title span { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; }
+        .badge { background: #1A1F2E; padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.7rem; color: #9cdcfe; }
+        .toggle-icon { color: #7e8aa2; font-size: 1.2rem; transition: transform 0.2s; }
+        .ex-content { display: none; background: #0A0C12; border-top: 1px solid #1e2432; padding: 1rem 1.5rem 1.5rem; }
+        .ex-content.open { display: block; }
+        .desc { background: #0B0E14; padding: 0.7rem 1rem; border-radius: 12px; margin-bottom: 1rem; font-size: 0.85rem; border-left: 3px solid #4EC5F0; }
+        pre { margin: 0; border-radius: 12px; overflow-x: auto; }
+        code { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; }
+        .btn-copy { background: #1E2438; border: none; padding: 0.3rem 0.9rem; border-radius: 30px; color: #bbd9ff; font-size: 0.75rem; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; margin-top: 1rem; transition: 0.2s; }
+        .btn-copy:hover { background: #2a3650; color: white; }
+        .footer { margin-top: 2.5rem; text-align: center; font-size: 0.75rem; color: #5f6f8a; }
+        @media (max-width: 550px) { body { padding: 1rem; } .ex-header { flex-direction: column; align-items: flex-start; } .toggle-icon { align-self: flex-end; } }
+        .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #1E2438ee; backdrop-filter: blur(8px); padding: 0.5rem 1.2rem; border-radius: 40px; font-size: 0.8rem; border: 1px solid #4EC5F0; color: #c7e9ff; opacity: 0; transition: 0.2s; pointer-events: none; z-index: 999; }
     </style>
 </head>
 <body>
@@ -227,10 +97,7 @@ int main()
                 <div class="desc">
                     📌 Pide una palabra y cuenta cuántas vocales tiene (incluye mayúsculas). Versión simple.
                 </div>
-                <pre><code id="code2" class="language-cpp">// ============================================================
-// PROGRAMA: Contador básico de vocales
-// ============================================================
-#include &lt;iostream&gt;
+                <pre><code id="code2" class="language-cpp">#include &lt;iostream&gt;
 using namespace std;
 
 int main()
@@ -258,55 +125,7 @@ int main()
             </div>
         </div>
 
-        <!-- EJERCICIO 3: Número mayor y menor de 4 números -->
-        <div class="ex-card" data-ex="3">
-            <div class="ex-header">
-                <div class="ex-title">
-                    <i class="fas fa-chart-line"></i>
-                    <span>#03 · Mayor y menor de 4 números</span>
-                    <span class="badge">array | bucle | comparaciones</span>
-                </div>
-                <i class="fas fa-chevron-down toggle-icon"></i>
-            </div>
-            <div class="ex-content">
-                <div class="desc">
-                    📌 Pide cuatro números enteros, los guarda en un array y determina cuál es el mayor y cuál es el menor mediante un bucle `for`.
-                </div>
-                <pre><code id="code3" class="language-cpp">// ============================================================
-// PROGRAMA: Número mayor y menor de 4 números
-// ============================================================
-#include &lt;iostream&gt;
-using namespace std;
-
-int main() {
-    int a, b, c, d;
-
-    cout &lt;&lt; "Ingresa cuatro números enteros separados por espacio: ";
-    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;
-
-    int numeros[4] = {a, b, c, d};
-    int mayor = numeros[0];
-    int menor = numeros[0];
-
-    for(int i = 1; i &lt; 4; i++) {
-        if(numeros[i] &gt; mayor) {
-            mayor = numeros[i];
-        }
-        if(numeros[i] &lt; menor) {
-            menor = numeros[i];
-        }
-    }
-
-    cout &lt;&lt; "El número mayor es: " &lt;&lt; mayor &lt;&lt; endl;
-    cout &lt;&lt; "El número menor es: " &lt;&lt; menor &lt;&lt; endl;
-
-    return 0;
-}</code></pre>
-                <button class="btn-copy" data-code="code3"><i class="fas fa-copy"></i> Copiar código</button>
-            </div>
-        </div>
-
-        <!-- EJERCICIO 4: Contador de vocales avanzado (conteo individual, resumen y vocal más repetida) -->
+        <!-- EJERCICIO 4: Contador de vocales avanzado (después del #02) -->
         <div class="ex-card" data-ex="4">
             <div class="ex-header">
                 <div class="ex-title">
@@ -318,7 +137,7 @@ int main() {
             </div>
             <div class="ex-content">
                 <div class="desc">
-                    📌 Pide una palabra, cuenta total de vocales, cuántas veces aparece cada una (solo muestra las que tienen al menos 1), y determina la(s) vocal(es) que más se repiten. Totalmente documentado.
+                    📌 Pide una palabra, cuenta total de vocales, cuántas veces aparece cada una (solo muestra las que tienen al menos 1), y determina la(s) vocal(es) que más se repiten.
                 </div>
                 <pre><code id="code4" class="language-cpp">// ============================================================
 // PROGRAMA: Contador de vocales avanzado
@@ -327,22 +146,15 @@ int main() {
 using namespace std;
 
 int main() {
-    // -------------------- DECLARACIÓN DE VARIABLES --------------------
-    string palabra;      // Almacena la palabra ingresada por el usuario
-    int vocales = 0;     // Contador total de vocales
-    int vocalesA = 0;    // Contador específico para 'a' y 'A'
-    int vocalesE = 0;    // Contador específico para 'e' y 'E'
-    int vocalesI = 0;    // Contador específico para 'i' y 'I'
-    int vocalesO = 0;    // Contador específico para 'o' y 'O'
-    int vocalesU = 0;    // Contador específico para 'u' y 'U'
+    string palabra;
+    int vocales = 0;
+    int vocalesA = 0, vocalesE = 0, vocalesI = 0, vocalesO = 0, vocalesU = 0;
 
-    // -------------------- ENTRADA DE DATOS --------------------
     cout &lt;&lt; "Ingresa una palabra: ";
-    cin &gt;&gt; palabra;     // Se lee una sola palabra (sin espacios)
+    cin &gt;&gt; palabra;
 
-    // -------------------- RECORRIDO CARÁCTER POR CARÁCTER --------------------
     for(int i = 0; i &lt; palabra.length(); i++) {
-        // Contar vocales en general (mayúsculas y minúsculas)
+        // Contar total de vocales
         if(palabra[i] == 'a' || palabra[i] == 'e' ||
            palabra[i] == 'i' || palabra[i] == 'o' ||
            palabra[i] == 'u' || palabra[i] == 'A' ||
@@ -350,89 +162,98 @@ int main() {
            palabra[i] == 'O' || palabra[i] == 'U') {
             vocales++;
         }
-
-        // Contar vocal 'a' (incluye mayúscula)
-        if(palabra[i] == 'a' || palabra[i] == 'A') {
-            vocalesA++;
-        }
-        // Contar vocal 'e' (incluye mayúscula)
-        else if(palabra[i] == 'e' || palabra[i] == 'E') {
-            vocalesE++;
-        }
-        // Contar vocal 'i' (incluye mayúscula)
-        else if(palabra[i] == 'i' || palabra[i] == 'I') {
-            vocalesI++;
-        }
-        // Contar vocal 'o' (incluye mayúscula)
-        else if(palabra[i] == 'o' || palabra[i] == 'O') {
-            vocalesO++;
-        }
-        // Contar vocal 'u' (incluye mayúscula)
-        else if(palabra[i] == 'u' || palabra[i] == 'U') {
-            vocalesU++;
-        }
+        // Contar cada vocal individualmente
+        if(palabra[i] == 'a' || palabra[i] == 'A') vocalesA++;
+        else if(palabra[i] == 'e' || palabra[i] == 'E') vocalesE++;
+        else if(palabra[i] == 'i' || palabra[i] == 'I') vocalesI++;
+        else if(palabra[i] == 'o' || palabra[i] == 'O') vocalesO++;
+        else if(palabra[i] == 'u' || palabra[i] == 'U') vocalesU++;
     }
 
-    // -------------------- RESULTADO PRINCIPAL --------------------
-    cout &lt;&lt; "La palabra " &lt;&lt; palabra &lt;&lt; " tiene " &lt;&lt; vocales &lt;&lt; " vocales." &lt;&lt; endl &lt;&lt; endl;
+    cout &lt;&lt; "La palabra " &lt;&lt; palabra &lt;&lt; " tiene " &lt;&lt; vocales &lt;&lt; " vocales.\n\n";
+    cout &lt;&lt; "RESUMEN DE LAS VOCALES\n";
+    if(vocalesA > 0) cout &lt;&lt; "a = " &lt;&lt; vocalesA &lt;&lt; " veces.\n";
+    if(vocalesE > 0) cout &lt;&lt; "e = " &lt;&lt; vocalesE &lt;&lt; " veces.\n";
+    if(vocalesI > 0) cout &lt;&lt; "i = " &lt;&lt; vocalesI &lt;&lt; " veces.\n";
+    if(vocalesO > 0) cout &lt;&lt; "o = " &lt;&lt; vocalesO &lt;&lt; " veces.\n";
+    if(vocalesU > 0) cout &lt;&lt; "u = " &lt;&lt; vocalesU &lt;&lt; " veces.\n";
 
-    // -------------------- RESUMEN POR VOCAL (SOLO LAS QUE APARECEN) --------------------
-    cout &lt;&lt; "RESUMEN DE LAS VOCALES" &lt;&lt; endl;
-    if(vocalesA &gt; 0) {
-        cout &lt;&lt; "a = " &lt;&lt; vocalesA &lt;&lt; " veces." &lt;&lt; endl;
-    }
-    if(vocalesE &gt; 0) {
-        cout &lt;&lt; "e = " &lt;&lt; vocalesE &lt;&lt; " veces." &lt;&lt; endl;
-    }
-    if(vocalesI &gt; 0) {
-        cout &lt;&lt; "i = " &lt;&lt; vocalesI &lt;&lt; " veces." &lt;&lt; endl;
-    }
-    if(vocalesO &gt; 0) {
-        cout &lt;&lt; "o = " &lt;&lt; vocalesO &lt;&lt; " veces." &lt;&lt; endl;
-    }
-    if(vocalesU &gt; 0) {
-        cout &lt;&lt; "u = " &lt;&lt; vocalesU &lt;&lt; " veces." &lt;&lt; endl;
-    }
+    // Determinar la(s) vocal(es) más repetida(s)
+    int peso = vocalesA;
+    if(vocalesE > peso) peso = vocalesE;
+    if(vocalesI > peso) peso = vocalesI;
+    if(vocalesO > peso) peso = vocalesO;
+    if(vocalesU > peso) peso = vocalesU;
 
-    // -------------------- DETERMINAR LA VOCAL (O VOCALES) MÁS REPETIDA --------------------
-    // Se calcula el valor máximo entre los contadores individuales
-    int peso = vocalesA;   // empezamos con el contador de 'a'
-
-    if(vocalesE &gt; peso) {
-        peso = vocalesE;
-    }
-    if(vocalesI &gt; peso) {
-        peso = vocalesI;
-    }
-    if(vocalesO &gt; peso) {
-        peso = vocalesO;
-    }
-    if(vocalesU &gt; peso) {
-        peso = vocalesU;
-    }
-
-    // Se muestran todas las vocales cuyo contador sea igual al máximo
     cout &lt;&lt; "La(s) vocal(es) mas repetida(s): ";
-    if(vocalesA == peso) {
-        cout &lt;&lt; "a ";
-    }
-    if(vocalesE == peso) {
-        cout &lt;&lt; "e ";
-    }
-    if(vocalesI == peso) {
-        cout &lt;&lt; "i ";
-    }
-    if(vocalesO == peso) {
-        cout &lt;&lt; "o ";
-    }
-    if(vocalesU == peso) {
-        cout &lt;&lt; "u ";
-    }
+    if(vocalesA == peso) cout &lt;&lt; "a ";
+    if(vocalesE == peso) cout &lt;&lt; "e ";
+    if(vocalesI == peso) cout &lt;&lt; "i ";
+    if(vocalesO == peso) cout &lt;&lt; "o ";
+    if(vocalesU == peso) cout &lt;&lt; "u ";
     cout &lt;&lt; "con " &lt;&lt; peso &lt;&lt; " apariciones." &lt;&lt; endl;
-
     return 0;
 }</code></pre>
                 <button class="btn-copy" data-code="code4"><i class="fas fa-copy"></i> Copiar código</button>
+            </div>
+        </div>
+
+        <!-- EJERCICIO 3: Número mayor (versión con ifs, como la que compartiste) -->
+        <div class="ex-card" data-ex="3">
+            <div class="ex-header">
+                <div class="ex-title">
+                    <i class="fas fa-sort-amount-up"></i>
+                    <span>#03 · Número mayor (comparaciones con if)</span>
+                    <span class="badge">4 números | if secuenciales</span>
+                </div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="ex-content">
+                <div class="desc">
+                    📌 Pide 4 números e indica cuál es el mayor. Esta versión utiliza comparaciones sucesivas con <code>if</code> y una variable auxiliar <code>mano</code>. (Código original del usuario, ligeramente corregido en la salida).
+                </div>
+                <pre><code id="code3" class="language-cpp">/*8. Número mayor
+   Pide 4 números e indica cuál es el mayor.*/
+
+#include &lt;iostream&gt;
+using namespace std;
+
+int main(){
+    int a, b, c, d;
+    
+    cout &lt;&lt; "Ingresa cuatro números: " &lt;&lt; endl;
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;
+    
+    int mano = a;   // suponemos que 'a' es el mayor por ahora
+    
+    // Comparaciones sucesivas (nota: solo comparan con 'a', no con el valor actual de 'mano')
+    if (b > a) {
+        mano = b;
+    }
+    if (c > a) {
+        mano = c;
+    }
+    if (d > a) {
+        mano = d;
+    }
+    
+    // Mostrar el resultado según qué variable quedó en 'mano'
+    if (mano == a) {
+        cout &lt;&lt; "El número mayor es: " &lt;&lt; a &lt;&lt; endl;
+    }
+    if (mano == b) {
+        cout &lt;&lt; "El número mayor es: " &lt;&lt; b &lt;&lt; endl;
+    }
+    if (mano == c) {
+        cout &lt;&lt; "El número mayor es: " &lt;&lt; c &lt;&lt; endl;
+    }
+    if (mano == d) {
+        cout &lt;&lt; "El número mayor es: " &lt;&lt; d &lt;&lt; endl;
+    }
+    
+    return 0;
+}</code></pre>
+                <button class="btn-copy" data-code="code3"><i class="fas fa-copy"></i> Copiar código</button>
             </div>
         </div>
     </div>
@@ -445,7 +266,6 @@ int main() {
 
 <script>
     (function() {
-        // Lógica de acordeón: solo un ejercicio abierto a la vez
         const cards = document.querySelectorAll('.ex-card');
         
         function closeAllExcept(currentCard) {
@@ -491,7 +311,6 @@ int main() {
             });
         });
 
-        // Toast y copiar al portapapeles
         const toast = document.getElementById('toastMsg');
         let toastTimer;
         function showToast(msg) {
