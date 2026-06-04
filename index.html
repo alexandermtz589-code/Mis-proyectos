@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <style>
-        /* Mismos estilos que antes (acordeón oculto, tema oscuro) */
         * {
             margin: 0;
             padding: 0;
@@ -172,7 +171,7 @@
     <div class="sub">🔽 Haz clic en cualquier ejercicio para ver el código (totalmente documentado)</div>
 
     <div class="exercises-list">
-        <!-- EJERCICIO 1 (sin cambios) -->
+        <!-- EJERCICIO 1: Operaciones con 3 enteros -->
         <div class="ex-card" data-ex="1">
             <div class="ex-header">
                 <div class="ex-title">
@@ -214,117 +213,228 @@ int main()
             </div>
         </div>
 
-        <!-- EJERCICIO 2 (REEMPLAZADO con código documentado línea por línea, soporta mayúsculas) -->
+        <!-- EJERCICIO 2: Contador de vocales (versión simple) -->
         <div class="ex-card" data-ex="2">
             <div class="ex-header">
                 <div class="ex-title">
                     <i class="fas fa-microphone-alt"></i>
-                    <span>#02 · Contador de vocales (con documentación)</span>
-                    <span class="badge">strings | mayúsculas | comentarios</span>
+                    <span>#02 · Contador de vocales (básico)</span>
+                    <span class="badge">strings | mayúsculas</span>
                 </div>
                 <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="ex-content">
                 <div class="desc">
-                    📌 Pide una palabra y cuenta cuántas vocales tiene (incluye mayúsculas). El código está documentado línea por línea en español.
+                    📌 Pide una palabra y cuenta cuántas vocales tiene (incluye mayúsculas). Versión simple.
                 </div>
                 <pre><code id="code2" class="language-cpp">// ============================================================
-// LÍNEA 1: Inclusión de la biblioteca iostream
+// PROGRAMA: Contador básico de vocales
 // ============================================================
 #include &lt;iostream&gt;
-// Esta línea incluye la biblioteca estándar de E/S (Input/Output).
-// Permite usar objetos como 'cout' para imprimir en pantalla y 'cin' para leer del teclado.
-
-// ============================================================
-// LÍNEA 2: Uso del espacio de nombres std
-// ============================================================
 using namespace std;
-// Evita tener que escribir 'std::' antes de cada elemento estándar
-// (cout, cin, string, endl, etc.). Hace el código más legible.
 
-// ============================================================
-// LÍNEA 4: Función principal main
-// ============================================================
-int main() {
-// Todo programa en C++ comienza su ejecución desde la función main().
-// 'int' indica que retornará un número entero al sistema operativo al finalizar.
-
-// ============================================================
-// LÍNEA 5: Declaración de variable 'palabra' (tipo string)
-// ============================================================
+int main()
+{
     string palabra;
-    // Se crea una variable llamada 'palabra' de tipo string (cadena de texto).
-    // Almacenará la entrada del usuario.
-
-// ============================================================
-// LÍNEA 6: Declaración e inicialización de 'vocales' (tipo int)
-// ============================================================
     int vocales = 0;
-    // Se declara una variable entera 'vocales' y se inicializa con 0.
-    // Actuará como contador de las vocales encontradas.
 
-// ============================================================
-// LÍNEA 8: Mensaje de solicitud al usuario
-// ============================================================
     cout &lt;&lt; "Ingresa una palabra: ";
-    // 'cout' envía el texto entre comillas a la consola.
-    // No hay 'endl' para que el cursor quede en la misma línea y el usuario escriba al lado.
-
-// ============================================================
-// LÍNEA 9: Lectura de la palabra desde el teclado
-// ============================================================
     cin &gt;&gt; palabra;
-    // 'cin' extrae la entrada del usuario hasta el primer espacio en blanco (o salto de línea)
-    // y la guarda en la variable 'palabra'. Solo leerá una palabra (sin espacios).
 
-// ============================================================
-// LÍNEA 11: Bucle for para recorrer cada carácter de la palabra
-// ============================================================
     for(int i = 0; i &lt; palabra.length(); i++) {
-    //   |       |        |
-    //   |       |        +-- i++ : incrementa i en 1 después de cada iteración.
-    //   |       +-- condición: mientras i sea menor que la longitud de 'palabra'.
-    //   +-- declaración e inicialización de variable local 'i' con valor 0.
-    // palabra.length() devuelve el número de caracteres (incluyendo espacios, si los hubiera, pero aquí no).
-    // El bucle se ejecuta una vez por cada letra de la palabra.
-
-// ============================================================
-// LÍNEA 12-14: Condicional para detectar vocales (minúsculas y mayúsculas)
-// ============================================================
         if(palabra[i] == 'a' || palabra[i] == 'e' ||
            palabra[i] == 'i' || palabra[i] == 'o' ||
            palabra[i] == 'u' || palabra[i] == 'A' ||
            palabra[i] == 'E' || palabra[i] == 'I' ||
            palabra[i] == 'O' || palabra[i] == 'U') {
-        // palabra[i] accede al carácter en la posición i del string (0 para el primero).
-        // Compara ese carácter con cada vocal (minúscula y mayúscula) usando el operador OR (||).
-        // Si coincide con alguna, la condición es verdadera.
-
-// ============================================================
-// LÍNEA 15: Incremento del contador
-// ============================================================
             vocales++;
-            // Cuando se encuentra una vocal, se suma 1 al contador 'vocales'.
         }
+    }
 
-// ============================================================
-// LÍNEA 18: Impresión del resultado final
-// ============================================================
     cout &lt;&lt; "La palabra tiene " &lt;&lt; vocales &lt;&lt; " vocales." &lt;&lt; endl;
-    // Muestra el mensaje con el total de vocales encontradas.
-    // 'endl' añade un salto de línea y limpia el buffer de salida.
-
-// ============================================================
-// LÍNEA 20: Retorno de la función main
-// ============================================================
     return 0;
-    // Devuelve 0 al sistema operativo, indicando que el programa terminó sin errores.
 }</code></pre>
                 <button class="btn-copy" data-code="code2"><i class="fas fa-copy"></i> Copiar código</button>
             </div>
         </div>
 
-        <!-- Aquí puedes seguir agregando más ejercicios -->
+        <!-- EJERCICIO 3: Número mayor y menor de 4 números -->
+        <div class="ex-card" data-ex="3">
+            <div class="ex-header">
+                <div class="ex-title">
+                    <i class="fas fa-chart-line"></i>
+                    <span>#03 · Mayor y menor de 4 números</span>
+                    <span class="badge">array | bucle | comparaciones</span>
+                </div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="ex-content">
+                <div class="desc">
+                    📌 Pide cuatro números enteros, los guarda en un array y determina cuál es el mayor y cuál es el menor mediante un bucle `for`.
+                </div>
+                <pre><code id="code3" class="language-cpp">// ============================================================
+// PROGRAMA: Número mayor y menor de 4 números
+// ============================================================
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int a, b, c, d;
+
+    cout &lt;&lt; "Ingresa cuatro números enteros separados por espacio: ";
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;
+
+    int numeros[4] = {a, b, c, d};
+    int mayor = numeros[0];
+    int menor = numeros[0];
+
+    for(int i = 1; i &lt; 4; i++) {
+        if(numeros[i] &gt; mayor) {
+            mayor = numeros[i];
+        }
+        if(numeros[i] &lt; menor) {
+            menor = numeros[i];
+        }
+    }
+
+    cout &lt;&lt; "El número mayor es: " &lt;&lt; mayor &lt;&lt; endl;
+    cout &lt;&lt; "El número menor es: " &lt;&lt; menor &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+                <button class="btn-copy" data-code="code3"><i class="fas fa-copy"></i> Copiar código</button>
+            </div>
+        </div>
+
+        <!-- EJERCICIO 4: Contador de vocales avanzado (conteo individual, resumen y vocal más repetida) -->
+        <div class="ex-card" data-ex="4">
+            <div class="ex-header">
+                <div class="ex-title">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>#04 · Contador de vocales avanzado</span>
+                    <span class="badge">conteo individual | estadísticas | vocal más repetida</span>
+                </div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="ex-content">
+                <div class="desc">
+                    📌 Pide una palabra, cuenta total de vocales, cuántas veces aparece cada una (solo muestra las que tienen al menos 1), y determina la(s) vocal(es) que más se repiten. Totalmente documentado.
+                </div>
+                <pre><code id="code4" class="language-cpp">// ============================================================
+// PROGRAMA: Contador de vocales avanzado
+// ============================================================
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    // -------------------- DECLARACIÓN DE VARIABLES --------------------
+    string palabra;      // Almacena la palabra ingresada por el usuario
+    int vocales = 0;     // Contador total de vocales
+    int vocalesA = 0;    // Contador específico para 'a' y 'A'
+    int vocalesE = 0;    // Contador específico para 'e' y 'E'
+    int vocalesI = 0;    // Contador específico para 'i' y 'I'
+    int vocalesO = 0;    // Contador específico para 'o' y 'O'
+    int vocalesU = 0;    // Contador específico para 'u' y 'U'
+
+    // -------------------- ENTRADA DE DATOS --------------------
+    cout &lt;&lt; "Ingresa una palabra: ";
+    cin &gt;&gt; palabra;     // Se lee una sola palabra (sin espacios)
+
+    // -------------------- RECORRIDO CARÁCTER POR CARÁCTER --------------------
+    for(int i = 0; i &lt; palabra.length(); i++) {
+        // Contar vocales en general (mayúsculas y minúsculas)
+        if(palabra[i] == 'a' || palabra[i] == 'e' ||
+           palabra[i] == 'i' || palabra[i] == 'o' ||
+           palabra[i] == 'u' || palabra[i] == 'A' ||
+           palabra[i] == 'E' || palabra[i] == 'I' ||
+           palabra[i] == 'O' || palabra[i] == 'U') {
+            vocales++;
+        }
+
+        // Contar vocal 'a' (incluye mayúscula)
+        if(palabra[i] == 'a' || palabra[i] == 'A') {
+            vocalesA++;
+        }
+        // Contar vocal 'e' (incluye mayúscula)
+        else if(palabra[i] == 'e' || palabra[i] == 'E') {
+            vocalesE++;
+        }
+        // Contar vocal 'i' (incluye mayúscula)
+        else if(palabra[i] == 'i' || palabra[i] == 'I') {
+            vocalesI++;
+        }
+        // Contar vocal 'o' (incluye mayúscula)
+        else if(palabra[i] == 'o' || palabra[i] == 'O') {
+            vocalesO++;
+        }
+        // Contar vocal 'u' (incluye mayúscula)
+        else if(palabra[i] == 'u' || palabra[i] == 'U') {
+            vocalesU++;
+        }
+    }
+
+    // -------------------- RESULTADO PRINCIPAL --------------------
+    cout &lt;&lt; "La palabra " &lt;&lt; palabra &lt;&lt; " tiene " &lt;&lt; vocales &lt;&lt; " vocales." &lt;&lt; endl &lt;&lt; endl;
+
+    // -------------------- RESUMEN POR VOCAL (SOLO LAS QUE APARECEN) --------------------
+    cout &lt;&lt; "RESUMEN DE LAS VOCALES" &lt;&lt; endl;
+    if(vocalesA &gt; 0) {
+        cout &lt;&lt; "a = " &lt;&lt; vocalesA &lt;&lt; " veces." &lt;&lt; endl;
+    }
+    if(vocalesE &gt; 0) {
+        cout &lt;&lt; "e = " &lt;&lt; vocalesE &lt;&lt; " veces." &lt;&lt; endl;
+    }
+    if(vocalesI &gt; 0) {
+        cout &lt;&lt; "i = " &lt;&lt; vocalesI &lt;&lt; " veces." &lt;&lt; endl;
+    }
+    if(vocalesO &gt; 0) {
+        cout &lt;&lt; "o = " &lt;&lt; vocalesO &lt;&lt; " veces." &lt;&lt; endl;
+    }
+    if(vocalesU &gt; 0) {
+        cout &lt;&lt; "u = " &lt;&lt; vocalesU &lt;&lt; " veces." &lt;&lt; endl;
+    }
+
+    // -------------------- DETERMINAR LA VOCAL (O VOCALES) MÁS REPETIDA --------------------
+    // Se calcula el valor máximo entre los contadores individuales
+    int peso = vocalesA;   // empezamos con el contador de 'a'
+
+    if(vocalesE &gt; peso) {
+        peso = vocalesE;
+    }
+    if(vocalesI &gt; peso) {
+        peso = vocalesI;
+    }
+    if(vocalesO &gt; peso) {
+        peso = vocalesO;
+    }
+    if(vocalesU &gt; peso) {
+        peso = vocalesU;
+    }
+
+    // Se muestran todas las vocales cuyo contador sea igual al máximo
+    cout &lt;&lt; "La(s) vocal(es) mas repetida(s): ";
+    if(vocalesA == peso) {
+        cout &lt;&lt; "a ";
+    }
+    if(vocalesE == peso) {
+        cout &lt;&lt; "e ";
+    }
+    if(vocalesI == peso) {
+        cout &lt;&lt; "i ";
+    }
+    if(vocalesO == peso) {
+        cout &lt;&lt; "o ";
+    }
+    if(vocalesU == peso) {
+        cout &lt;&lt; "u ";
+    }
+    cout &lt;&lt; "con " &lt;&lt; peso &lt;&lt; " apariciones." &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+                <button class="btn-copy" data-code="code4"><i class="fas fa-copy"></i> Copiar código</button>
+            </div>
+        </div>
     </div>
     <div class="footer">
         <i class="fas fa-arrow-down"></i> Todos los códigos empiezan ocultos · Haz clic para abrir
@@ -335,7 +445,7 @@ int main() {
 
 <script>
     (function() {
-        // Lógica de toggle (acordeón) y copiar (igual que antes)
+        // Lógica de acordeón: solo un ejercicio abierto a la vez
         const cards = document.querySelectorAll('.ex-card');
         
         function closeAllExcept(currentCard) {
@@ -381,7 +491,7 @@ int main() {
             });
         });
 
-        // Toast y copiar
+        // Toast y copiar al portapapeles
         const toast = document.getElementById('toastMsg');
         let toastTimer;
         function showToast(msg) {
